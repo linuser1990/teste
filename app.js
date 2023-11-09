@@ -13,3 +13,5 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.listen(4000)
+
+console.log('Application running...')
