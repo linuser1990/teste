@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const router = require('./routes')
+require('dotenv').config()
 
 app.use('/api',router)
 
@@ -12,6 +13,6 @@ app.set('view engine', 'ejs');
 // Define the 'views' directory to store your EJS files
 app.set('views', __dirname + '/views');
 
-app.listen(4000)
+app.listen(process.env.PORT)
 
 console.log('Application running...')
