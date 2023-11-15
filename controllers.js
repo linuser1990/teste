@@ -2,8 +2,7 @@ const pool = require('./db')
 
 const show = async (req, res) => 
 {
-    console.log('exibir')
-    const {rows} = await pool.query('SELECT * FROM cliente')
+    const {rows} = await pool.query('SELECT * FROM cliente ORDER BY nome')
     res.render('index',{resultado : rows })
 }
 
@@ -31,7 +30,8 @@ const update = async (req, res) =>
 {
     const {codigo} = req.params
     const {nome} = req.body
-    const {rows} = await pool.query('UPDATE cliente SET nome = $1 WHERE codigo = $2',[nome,codigo])
+    const {rows} = await pool.query('UPDATE cliente SET nome = $1 WHERE codigo = $2 RETURNING *',[nome,codigo])
+    res.status(200).json({mensagem: 'atualizado o novo nome: ', row : rows[0]})
 }
 
 module.exports = {show,add,remove,update}
