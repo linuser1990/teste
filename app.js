@@ -2,6 +2,9 @@ const express = require('express')
 const app = express()
 const router = require('./routes')
 require('dotenv').config()
+const body_parser = require('body-parser')
+
+app.use(body_parser.json())
 
 app.use('/api',router)
 
