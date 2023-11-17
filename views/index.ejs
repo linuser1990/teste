@@ -8,5 +8,12 @@
             <%=resultado[i].codigo%>
              <%=resultado[i].nome%><br>
          <% } %></div>
+         <br>
+         <form method="post" action="/api/verificaLogin">
+            senha<input type="text" name="senha" id="senha">
+            <button type="submit">VERIFICAR</button>
+         </form>
+         <br>
+        <a href="/api/dashboard">DASHBOARD</a>
     </body>
 </html>
